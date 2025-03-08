@@ -1,0 +1,9 @@
+[user]
+	name = Filippo Gurioli
+	email = filippo.gurioli@studio.unibo.it
+	signingkey = 47EC1F379BAC7FFB
+[pull]
+	rebase = true
+[commit]
+	gpgSing = true
+	gpgsign = true
