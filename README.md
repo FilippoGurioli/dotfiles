@@ -6,10 +6,8 @@ Clone this repo into your home directory:
 
 ```bash
 cd ~
-git clone --recursive git@github.com:FilippoGurioli/dotfiles.git
+git clone git@github.com:FilippoGurioli/dotfiles.git
 ```
-
-The `recursive` flag is necessary to clone the submodules as well.
 
 Then, use `stow` command to symlink the configuration files:
 
@@ -34,4 +32,3 @@ stow --adopt .
 - `.zshrc`: Zsh configuration file
 - `.p10k.zsh`: Powerlevel10k configuration file
 - `.gitconfig`: Global git configuration file
-- `.oh-my-zsh`: Oh My Zsh configuration directory with custom plugins and themes inserted as submodules
