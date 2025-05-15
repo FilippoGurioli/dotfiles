@@ -116,6 +116,19 @@ ZSH_HIGHLIGHT_STYLES[path]='none'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+code() {
+  TARGET_DIR="${1:-.}"
+  # Find a .code-workspace file in the directory (only one, prefer exact match)
+  WORKSPACE_FILE=$(find "$TARGET_DIR" -maxdepth 1 -type f -name '*.code-workspace' | head -n 1)
+  if [[ -n "$WORKSPACE_FILE" ]]; then
+    # Open the workspace files
+    command code "$WORKSPACE_FILE"
+  else
+    # No workspace found, open the directory as-is
+    command code "$TARGET_DIR"
+  fi
+}
+
 brrrr() {
   ( aplay -c 2 -f u8 -r 44100 ~/Music/roomba.wav & ) &> /dev/null
   for (( i=1; i<=$(tput lines); i++ )) do
