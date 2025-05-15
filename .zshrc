@@ -147,11 +147,17 @@ alias fx="fileExplorer"
 alias scala="scala3"
 alias roomba="brrrr"
 alias stfu="shutdown now"
+alias gs="git status"
+alias gd="git diff --output-indicator-new ' ' --output-indicator-old=' '"
+alias gl="git log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 
 eval "$(zoxide init --cmd cd zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 eval `ttysvr logo tty --init 300`
 
