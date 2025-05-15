@@ -148,9 +148,11 @@ alias scala="scala3"
 alias roomba="brrrr"
 alias stfu="shutdown now"
 
+eval "$(zoxide init --cmd cd zsh)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval `ttysvr logo tty --init 60`
+eval `ttysvr logo tty --init 300`
 
 # neofetch
