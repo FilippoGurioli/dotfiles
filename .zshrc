@@ -138,7 +138,7 @@ fileExplorer() {
 }
 
 alias whereami="pwd"
-alias code="code $1 --enable-proposed-api GitHub.copilot --enable-proposed-api GitHub.copilot-chat"
+# alias code="code $1 --enable-proposed-api GitHub.copilot --enable-proposed-api GitHub.copilot-chat" - net needed anymore since I've installed the official vsc (not the OSS)
 #alias docker="sudo docker" - not needed anymore since sudo usermod -aG docker $USER
 alias prolog="java -jar ~/Documents/Unibo/PPS/Labs/2p-4.0.3.jar"
 # alias cat="bat"
