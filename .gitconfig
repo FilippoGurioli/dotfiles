@@ -13,6 +13,7 @@
 	showStash = true
 	showUntrackedFiles = all
 [core]
+	pager = delta
 	compression = 9
 	whitespace = error
 	preloadindex = true
@@ -31,11 +32,8 @@
 	renames = copies
 	interHunkContext = 10
 [pager]
-	diff = diff-so-fancy | $PAGER
 	branch = false
 	tag = false
-[diff-so-fancy]
-	markEmptyLines = false
 [color "diff"]
 	meta = black bold
 	frag = magenta
@@ -43,8 +41,8 @@
 	whitespace = yellow reverse
 	old = red
 [interactive]
-	diffFilter = diff-so-fancy --patch
 	singlekey = true
+	diffFilter = delta --color-only
 [push]
 	autoSetupRemote = true
 	default = current
@@ -70,3 +68,6 @@
 	sort = -committerdate
 [tag]
 	sort = -taggerdate
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	side-by-side = true
