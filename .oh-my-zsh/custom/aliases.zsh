@@ -4,6 +4,7 @@ alias scala="scala3"
 
 # Git aliases
 alias gs="git status"
+alias gu="git pull"
 alias gd="git diff --output-indicator-new ' ' --output-indicator-old=' '"
 alias gl="git log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 
