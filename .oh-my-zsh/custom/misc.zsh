@@ -7,8 +7,8 @@ eval "$(zoxide init --cmd cd zsh)"
 # Set up fzf key bindings (ctrl+r=history, ctrl+t=directories) and fuzzy completion
 source <(fzf --zsh)
 
-# Start tty saver with a custom logo after 300 seconds of inactivity
-eval `ttysvr logo tty --init 300`
+# Start tty saver with a custom logo after 30 minutes of inactivity
+eval `ttysvr logo tty --init 1800`
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
