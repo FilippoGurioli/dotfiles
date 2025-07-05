@@ -5,16 +5,17 @@ code() {
 
   # Check for Wayland session
   if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-    CODE_CMD='ELECTRON_OZONE_PLATFORM_HINT=auto QT_QPA_PLATFORM=wayland code --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland'
+    export QT_QPA_PLATFORM=wayland
+    export ELECTRON_OZONE_PLATFORM_HINT=auto
+    EXTRA_ARGS=(--enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland)
   else
-    # Fallback for X11 or unknown
-    CODE_CMD='code'
+    EXTRA_ARGS=()
   fi
 
   if [[ -n "$WORKSPACE_FILE" ]]; then
-    eval "$CODE_CMD \"$WORKSPACE_FILE\""
+    command code "${EXTRA_ARGS[@]}" "$WORKSPACE_FILE" 2> >(grep -v "Warning: '.*' is not in the list of known options" >&2)
   else
-    eval "$CODE_CMD \"$TARGET_DIR\""
+    command code "${EXTRA_ARGS[@]}" "$TARGET_DIR" 2> >(grep -v "Warning: '.*' is not in the list of known options" >&2)
   fi
 }
 
