@@ -1,16 +1,23 @@
 # Custom code command to open VS Code with workspace support
 code() {
   TARGET_DIR="${1:-.}"
-  # Find a .code-workspace file in the directory (only one, prefer exact match)
   WORKSPACE_FILE=$(find "$TARGET_DIR" -maxdepth 1 -type f -name '*.code-workspace' | head -n 1)
-  if [[ -n "$WORKSPACE_FILE" ]]; then
-    # Open the workspace files
-    command code "$WORKSPACE_FILE"
+
+  # Check for Wayland session
+  if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    CODE_CMD='ELECTRON_OZONE_PLATFORM_HINT=auto QT_QPA_PLATFORM=wayland code --enable-features=WaylandWindowDecorations --ozone-platform-hint=wayland'
   else
-    # No workspace found, open the directory as-is
-    command code "$TARGET_DIR"
+    # Fallback for X11 or unknown
+    CODE_CMD='code'
+  fi
+
+  if [[ -n "$WORKSPACE_FILE" ]]; then
+    eval "$CODE_CMD \"$WORKSPACE_FILE\""
+  else
+    eval "$CODE_CMD \"$TARGET_DIR\""
   fi
 }
+
 
 # Funny function to play a sound and clear the terminal
 # Requires a sound file named 'roomba.wav' in ~/Music
