@@ -2,6 +2,7 @@
 alias prolog="java -jar ~/Documents/Unibo/PPS/Labs/2p-4.0.3.jar"
 alias scala="scala3"
 alias hyprconfig="code ~/.config/hypr"
+alias waybarconfig="code ~/.config/waybar"
 
 # Git aliases
 alias gs="git status"
