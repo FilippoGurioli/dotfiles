@@ -8,8 +8,8 @@ logo_dir="$HOME/.config/waybar/distro-logos"
 
 # Default to generic logo if distro logo not found
 logo_file="$logo_dir/$distro.png"
-# if [[ ! -f "$logo_file" ]]; then
-    logo_file="$logo_dir/generic.png"
-# fi
+if [[ ! -f "$logo_file" ]]; then
+    logo_file="$logo_dir/linux.png"
+fi
 
 echo $logo_file
