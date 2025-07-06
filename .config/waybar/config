@@ -13,7 +13,7 @@
   },
   "custom/updates": {
     "exec": "~/.config/waybar/scripts/updates.sh",
-    "interval": 600,
+    "interval": 60,
     "return-type": "json",
     "format": "{}"
   },
