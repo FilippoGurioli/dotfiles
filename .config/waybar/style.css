@@ -54,6 +54,7 @@ button:hover {
     background-color: #eb4d4b;
 }
 
+#custom-updates,
 #pulseaudio,
 #clock,
 #battery,
@@ -108,6 +109,11 @@ button:hover {
 #battery {
     color: @green;
     border-bottom: 2px solid @green;
+}
+
+#custom-updates {
+    color: @mauve;
+    border-bottom: 2px solid @mauve;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

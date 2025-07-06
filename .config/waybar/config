@@ -5,11 +5,17 @@
     "hyprland/workspaces"
   ],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["custom/updates", "network", "pulseaudio", "battery", "clock"],
   // Modules configuration
   "image#distro-logo": {
     "exec": "~/.config/waybar/scripts/distro-logo.sh",
     "interval": 3600
+  },
+  "custom/updates": {
+    "exec": "~/.config/waybar/scripts/updates.sh",
+    "interval": 600,
+    "return-type": "json",
+    "format": "{}"
   },
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d/%m %H:%M}",
