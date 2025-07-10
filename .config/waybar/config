@@ -1,11 +1,8 @@
 {
   "position": "top",
-  "modules-left": [
-    "image#distro-logo",
-    "hyprland/workspaces"
-  ],
+  "modules-left": ["image#distro-logo", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["custom/updates", "network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["custom/updates", "network", "pulseaudio", "backlight", "battery", "clock"],
   // Modules configuration
   "image#distro-logo": {
     "exec": "~/.config/waybar/scripts/distro-logo.sh",
@@ -18,7 +15,7 @@
     "format": "{}"
   },
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d/%m %H:%M}",
+    "format": "{:%H:%M %d/%m}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
@@ -37,10 +34,10 @@
     "tooltip-format": "{time}"
   },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
+    "format-wifi": "{essid}",
+    "format-ethernet": "Disconnected",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "format-disconnected": "Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
@@ -50,5 +47,12 @@
           "default": ["", "", " "]
       },
       "on-click": "pavucontrol"
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": {
+      "default": ["", "", "", ""]
+    },
+    "tooltip-format": "it shines"
   }
 }
