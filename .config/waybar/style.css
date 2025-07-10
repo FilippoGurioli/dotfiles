@@ -48,6 +48,10 @@ button:hover {
     background-color: #eb4d4b;
 }
 
+#pulseaudio {
+    margin-right: 0px;
+}
+
 #custom-updates,
 #pulseaudio,
 #clock,
@@ -62,15 +66,20 @@ button:hover {
 #network,
 #mode,
 #image,
+#custom-distro-icon,
 #scratchpad {
-  margin: 2px 4px;
+  margin: 0px 4px;
   padding: 0px 12px;
   background-color: rgba(30,30,30,0.6);
   border-radius: 8px;
   color: @green;
 }
 
-#image {
+#backlight, #pulseaudio {
+    /*TODO center the icons*/
+}
+
+#custom-distro-icon {
     background-color: transparent;
 }
 
