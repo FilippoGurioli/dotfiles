@@ -1,7 +1,7 @@
-@import "themes/mocha.css"; 
+@import "my-theme.scss"; 
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: $text-font;
     font-size: 16px;
     min-height: 0;
     font-weight: bold;
@@ -10,10 +10,9 @@
 window#waybar {
     background: transparent;
     background-color: transparent;
-    color: @green;
+    color: $primary-color;
     transition-property: background-color;
     transition-duration: 0.1s;
-    border-bottom: 0px solid @overlay1;
 }
 
 #window {
@@ -30,8 +29,8 @@ button {
 
 button:hover {
     background: inherit;
-    color: @green;
-    border-top: 2px solid @green;
+    color: $primary-color;
+    border-top: $primary-color;
 }
 
 #workspaces button {
@@ -39,13 +38,12 @@ button:hover {
 }
 
 #workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @green;
-    border-top: 2px solid @green;
+    color: $primary-color;
+    border-top: 2px solid $primary-color;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: $error-color;
 }
 
 #pulseaudio {
@@ -70,14 +68,14 @@ button:hover {
 #scratchpad {
   margin: 0px 4px;
   padding: 0px 12px;
-  background-color: rgba(30,30,30,0.6);
+  background-color: rgba($background-color, 0.75);
   border-radius: 8px;
-  color: @green;
+  color: $primary-color;
 }
 
-#backlight, #pulseaudio {
-    /*TODO center the icons*/
-}
+/*#backlight, #pulseaudio {
+    TODO center the icons
+}*/
 
 #custom-distro-icon {
     background-color: transparent;
