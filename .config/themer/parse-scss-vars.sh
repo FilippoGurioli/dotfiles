@@ -2,7 +2,7 @@
 
 echo "" > $2
 
-while IFS= read -r line; do
+while IFS= read -r line || [[ -n $line ]]; do
     # if line starts with @import, parse the file and extract variables
     if [[ $line == @import* ]]; then
         file=$(echo "$line" | sed 's/@import\s*//;s/["'\'']//g; s/;//g')

@@ -4,7 +4,7 @@
   "modules-center": ["hyprland/window"],
   "modules-right": ["custom/updates", "network", "pulseaudio", "backlight", "battery", "clock"],
   "custom/distro-icon": {
-    "format": "<span size='13000' foreground='#a6e3a1'></span>",
+    "format": "<span size='13000' foreground='$primary_color'></span>",
     "interval": 3600
   },
   "hyprland/window": {
@@ -25,13 +25,13 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format": "<span size='13000' foreground='$primary_color'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='$primary_color'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='$error_color'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='$primary_color'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='$primary_color'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='$primary_color'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='$primary_color'> </span>{capacity}%",
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{time}"
   },
