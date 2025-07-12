@@ -27,8 +27,6 @@ cd ~/dotfiles
 stow --adopt .
 ```
 
-## Files
+It has also been developed a tool that updates all colors across the hyprland environment. This though to work properly requires that `$mainMod` + `R` is pressed at the very first time after the installation of the dotfiles.
 
-- `.zshrc`: Zsh configuration file
-- `.p10k.zsh`: Powerlevel10k configuration file
-- `.gitconfig`: Global git configuration file
+This feature lets you change the colors and other configurations just in one file: `.config/themer/my-theme.scss`. After done that, use `$mainMod` + `R` to apply the changes.

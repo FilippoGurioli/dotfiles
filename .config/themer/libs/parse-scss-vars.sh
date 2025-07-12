@@ -1,11 +1,14 @@
 #!/bin/bash
 
-input_file="$1"
-output_sh="${2:-$1.sh}"
-output_conf="${3:-$1.conf}"
+output_dir="$HOME/.config/themer/libs/autogen"
 
 # initialize only if this is the top-level call
-if [[ -z $2 ]]; then
+if [[ -z $output_sh ]]; then
+    mkdir -p "$output_dir"
+    input_file="$1"
+    file_name=$(basename "$input_file")
+    output_sh=$output_dir/${file_name%.scss}.sh
+    output_conf=$output_dir/${file_name%.scss}.conf
     echo "" > "$output_sh"
     echo "" > "$output_conf"
 fi
@@ -19,7 +22,7 @@ while IFS= read -r line || [[ -n $line ]]; do
         abs_path="$(dirname "$1")/$file"
         if [[ -f $abs_path ]]; then
             # recursively call the script to parse the imported file
-            source ~/.config/themer/parse-scss-vars.sh $abs_path "$output_sh" "$output_conf"
+            source ~/.config/themer/libs/parse-scss-vars.sh $abs_path
         else 
             echo "File $abs_path not found, skipping."
         fi
