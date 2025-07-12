@@ -6,11 +6,12 @@ while IFS= read -r line; do
     # if line starts with @import, parse the file and extract variables
     if [[ $line == @import* ]]; then
         file=$(echo "$line" | sed 's/@import\s*//;s/["'\'']//g; s/;//g')
-        if [[ -f $file ]]; then
+        abs_path="$(dirname "$1")/$file"
+        if [[ -f $abs_path ]]; then
             # recursively call the script to parse the imported file
-            bash ~/.config/themer/parse-scss-vars.sh $file $2
+            bash ~/.config/themer/parse-scss-vars.sh $abs_path $2
         else 
-            echo "File $file not found, skipping."
+            echo "File $abs_path not found, skipping."
         fi
     # if line starts with $, extract the variable name and value
     elif [[ $line == \$* ]]; then
