@@ -35,6 +35,10 @@ while IFS= read -r line || [[ -n $line ]]; do
         fi
         scss_vars["$var_name"]="$var_value"
         echo "export $var_name=\"$var_value\"" >> $output_sh
-        echo "\$$var_name = ${var_value:1}" >> $output_conf
+        if [[ $var_value == \#* ]]; then
+            echo "\$$var_name = ${var_value:1}" >> $output_conf
+        else
+            echo "\$$var_name = $var_value" >> $output_conf
+        fi
     fi
 done < "$1"
