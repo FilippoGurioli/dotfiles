@@ -3,13 +3,8 @@
   "modules-left": ["custom/distro-icon", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["custom/updates", "network", "pulseaudio", "backlight", "battery", "clock"],
-  // Modules configuration
   "custom/distro-icon": {
     "format": "<span size='13000' foreground='#a6e3a1'></span>",
-    "interval": 3600
-  },
-  "image#distro-logo": {
-    "exec": "~/.config/waybar/scripts/distro-logo.sh",
     "interval": 3600
   },
   "hyprland/window": {
@@ -53,8 +48,7 @@
       "format-icons": {
           "default": ["", "", " "]
       },
-      "tooltip-format": "{volume}%",
-      //"on-click": "pavucontrol"
+      "tooltip-format": "{volume}%"
   },
   "backlight": {
     "format": "{icon}",
