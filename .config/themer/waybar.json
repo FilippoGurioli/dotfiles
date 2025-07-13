@@ -4,7 +4,7 @@
   "modules-center": ["hyprland/window"],
   "modules-right": ["custom/updates", "network", "pulseaudio", "backlight", "battery", "power-profiles-daemon", "clock"],
   "custom/distro-icon": {
-    "format": "<span size='20000' foreground='$primary_color'></span>",
+    "format": "",
     "interval": 3600
   },
   "hyprland/window": {
