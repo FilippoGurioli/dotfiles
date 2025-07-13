@@ -29,7 +29,7 @@ while IFS= read -r line || [[ -n $line ]]; do
     # if line starts with $, extract the variable name and value
     elif [[ $line == \$* ]]; then
         var_name=$(echo $line | cut -d':' -f1 | sed 's/^\$//' | sed 's/-/_/g')
-        var_value=$(echo $line | cut -d':' -f2- | sed 's/;//g' | xargs)
+        var_value=$(echo $line | cut -d':' -f2- | sed 's/;//g' | xargs | sed 's/-/_/g')
         if [[ -v scss_vars["${var_value:1}"] ]]; then
             var_value="${scss_vars["${var_value:1}"]}"
         fi
