@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo virsh net-define /tmp/default.xml
+sudo virsh net-autostart default
+sudo virsh net-start default
+
 sudo virt-install \
 	--name arch \
 	--ram 2048 \
