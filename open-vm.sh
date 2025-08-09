@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo virsh start arch
+virsh start arch
 vncviewer $(sudo virsh vncdisplay arch)

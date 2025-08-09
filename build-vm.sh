@@ -1,10 +1,10 @@
 #!/bin/bash
 
-sudo virsh net-define /tmp/default.xml
-sudo virsh net-autostart default
-sudo virsh net-start default
+virsh net-define /usr/share/libvirt/networks/default.xml
+virsh net-autostart default
+virsh net-start default
 
-sudo virt-install \
+virt-install \
 	--name arch \
 	--ram 2048 \
 	--vcpus 4 \
@@ -13,3 +13,4 @@ sudo virt-install \
 	--os-variant archlinux \
 	--network network=default \
 	--graphics vnc 
+	--noautoconsole

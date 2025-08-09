@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo virsh destroy arch 2>/dev/null
-sudo virsh undefine --remove-all-storage arch
-sudo virsh net-destroy default
-sudo virsh net-undefine default
+virsh destroy arch 2>/dev/null
+virsh undefine --remove-all-storage arch
+virsh net-destroy default
+virsh net-undefine default
