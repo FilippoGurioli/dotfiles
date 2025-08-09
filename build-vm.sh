@@ -12,5 +12,5 @@ virt-install \
 	--cdrom /var/lib/libvirt/isos/archlinux-2025.08.01-x86_64.iso \
 	--os-variant archlinux \
 	--network network=default \
+	--noautoconsole \
 	--graphics vnc 
-	--noautoconsole
