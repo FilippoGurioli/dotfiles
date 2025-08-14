@@ -8,7 +8,7 @@ if [ $# -ne 2 ]; then
 fi
 
 # Setting an env var to spot if is vm
-if grep -qEi 'QEMU' /sys/class/dmi/id/sys_vendor 2>/dev/null; then
+if grep -qi 'qemu' /sys/class/dmi/id/sys_vendor 2>/dev/null; then
 	VM_ENV=1
 else
 	VM_ENV=0
@@ -28,7 +28,7 @@ echo "Updating system clock"
 timedatectl set-ntp true
 
 echo "Selecting the fastest 10 mirrors"
-reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo "Partitioning the disk"
 if [ $VM_ENV ]; then
@@ -49,7 +49,7 @@ echo "SSD: $SSD_PATH"
 echo "OTHERS: $OTHER_DISKS"
 
 echo "Wiping the existing partitions in $SSD_PATH"
-sgdisk --zap-all "$SSD_PATH" 2>/dev/null
+sgdisk --zap-all "$SSD_PATH" &>/dev/null
 echo "Creating EFI + ROOT partitions"
 parted -s "$SSD_PATH" mklabel gpt #GUID Partition Table
 parted -s "$SSD_PATH" mkpart EFI fat32 1MiB 513MiB #First partition, name:EFI, type:fat32, from 1MiB to 513 MiB (leaving first MiB blank)
@@ -60,8 +60,8 @@ EFI_PART="${SSD_PATH}1"
 ROOT_PART="${SSD_PATH}2"
 
 echo "Formatting partitions"
-mkfs.fat -F32 "$EFI_PART"
-mkfs.ext4 -F "$ROOT_PART"
+mkfs.fat -F32 "$EFI_PART" &>/dev/null
+mkfs.ext4 -F "$ROOT_PART" &>/dev/null
 
 echo "Mounting EFI + ROOT"
 mount "$ROOT_PART" /mnt 2>/dev/null
@@ -114,13 +114,15 @@ echo "LC_PAPER=it_IT.UTF-8" >> /etc/locale.conf
 echo "LC_TELEPHONE=it_IT.UTF-8" >> /etc/locale.conf
 echo "LC_TIME=it_IT.UTF-8" >> /etc/locale.conf
 
-echo "Setting hostname to arch-$1"
-echo "arch-$1" > /etc/hostname
+NAME="arch-$1"
+
+echo "Setting hostname to $NAME"
+echo "$NAME" > /etc/hostname
 
 echo "Setting hosts"
 echo "127.0.0.1 localhost" > /etc/hosts
 echo "::1 localhost" >> /etc/hosts
-echo "127.0.1.1 $1.localdomain $1" >> /etc/hosts
+echo "127.0.1.1 $NAME.localdomain $NAME" >> /etc/hosts
 
 echo "Setting the root password to $2"
 echo "root:$2" | chpasswd
