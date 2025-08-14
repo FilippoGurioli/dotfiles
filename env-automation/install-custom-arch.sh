@@ -27,7 +27,7 @@ else
 	VM_ENV=0
 fi
 
-info "FIRST BOOT SCRIPT"
+info "ARCH CUSTOM INSTALL SCRIPT"
 
 info "Updating system clock"
 timedatectl set-ntp true
@@ -95,7 +95,7 @@ else
 			PART_NAME=$(basename "$part")
 			MOUNT_DIR="/mnt/$PART_NAME"
 			mkdir -p "$MOUNT_DIR"
-			mount "$part" "$MOUNT_DIR"
+			mount "$part" "$MOUNT_DIR" || warning "Failed to mount $part"
 			info "Mounted $part"
 		done
 	done
