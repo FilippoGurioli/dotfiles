@@ -16,14 +16,6 @@ fi
 
 echo "FIRST BOOT SCRIPT"
 
-echo "Checking connectivity"
-if ! ping -c 1 -W 2 8.8.8.8 &> /dev/null; then
-	echo "No connection, aborting custom install, re-launch this script once there is connectivity"
-	return 1
-else
-	echo "Connected, starting custom install"
-fi
-
 echo "Updating system clock"
 timedatectl set-ntp true
 
