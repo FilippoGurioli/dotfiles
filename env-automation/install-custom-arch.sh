@@ -103,7 +103,7 @@ fi
 
 info "Changing root to /mnt"
 cp ./chroot-commands.sh /mnt/
-arch-chroot /mnt /bin/bash /chroot-commands.sh
+arch-chroot /mnt /bin/bash /chroot-commands.sh "$1" "$2"
 
 info "MINIMAL INSTALLATION DONE"
 info "Rebooting"
