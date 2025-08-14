@@ -85,7 +85,7 @@ for disk in "${OTHER_DISKS[@]}"; do
 done
 
 echo "Changing root to /mnt"
-arch-chroot /mnt /bin/bash -c "$(./chroot-commands.sh)"
+arch-chroot /mnt /bin/bash -c "$(cat ./chroot-commands.sh)"
 
 #echo "Setting time zone"
 #ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
