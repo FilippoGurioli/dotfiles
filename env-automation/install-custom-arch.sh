@@ -4,11 +4,11 @@ set -euo pipefail # fail fast strategy
 # Checking if the hostname is provided as first parameter
 if [ $# -ne 2 ]; then
 	echo "Error: provide the host name as first parameter (e.g. desktop/laptop/...) and the root password as second"
-	return 1
+	exit 1
 fi
 
 # Setting an env var to spot if is vm
-if grep -qi 'qemu' /sys/class/dmi/id/sys_vendor 2>/dev/null; then
+if grep -qEi 'qemu|vmware|virtualbox|kvm' /sys/class/dmi/id/sys_vendor 2>/dev/null; then
 	VM_ENV=1
 else
 	VM_ENV=0
@@ -20,10 +20,10 @@ echo "Updating system clock"
 timedatectl set-ntp true
 
 echo "Selecting the fastest 10 mirrors"
-#sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo "Partitioning the disk"
-if [ $VM_ENV ]; then
+if [ $VM_ENV -eq 1 ]; then
 	SSD_DISK=$(lsblk -d -o NAME,TYPE | awk '$2=="disk" {print $1; exit}')
 else
 	SSD_DISK=$(lsblk -d -o NAME,ROTA,TYPE | awk '$3=="disk" && $2==0 {print $1; exit}')
@@ -56,9 +56,9 @@ mkfs.fat -F32 "$EFI_PART" &>/dev/null
 mkfs.ext4 -F "$ROOT_PART" &>/dev/null
 
 echo "Mounting EFI + ROOT"
-mount "$ROOT_PART" /mnt 2>/dev/null
-mkdir /mnt/boot
-mount "$EFI_PART" /mnt/boot 2>/dev/null
+mount "$ROOT_PART" /mnt
+mkdir -p /mnt/boot
+mount "$EFI_PART" /mnt/boot
 
 echo "Installing base functionalities"
 pacstrap -K /mnt base linux-zen linux-firmware grub efibootmgr vim
@@ -67,25 +67,30 @@ echo "Generating file systems table"
 genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "Mounting other disks"
-for disk in "${OTHER_DISKS[@]}"; do
-	DISK_PATH="/dev/$disk"
-	PARTITIONS=$(lsblk -nrpo NAME "$DISK_PATH" | grep -v "$DISK_PATH")
-	if [ -z "$PARTITIONS" ]; then
-		echo "No partitions on $disk - skipping"
-		continue
-	fi
+if [ ${#OTHER_DISKS[@]} -eq 0 ]; then
+	echo "No other disks found - skipping"
+else
+	for disk in "${OTHER_DISKS[@]}"; do
+		DISK_PATH="/dev/$disk"
+		PARTITIONS=$(lsblk -nrpo NAME "$DISK_PATH" | grep -v "$DISK_PATH")
+		if [ -z "$PARTITIONS" ]; then
+			echo "No partitions on $disk - skipping"
+			continue
+		fi
 
-	for part in $PARTITIONS; do
-		PART_NAME=$(basename "$part")
-		MOUNT_DIR="/mnt/$PART_NAME"
-		mkdir -p "$MOUNT_DIR"
-		mount "$part" "$MOUNT_DIR"
-		echo "Mounted $part"
+		for part in $PARTITIONS; do
+			PART_NAME=$(basename "$part")
+			MOUNT_DIR="/mnt/$PART_NAME"
+			mkdir -p "$MOUNT_DIR"
+			mount "$part" "$MOUNT_DIR"
+			echo "Mounted $part"
+		done
 	done
-done
+fi
 
 echo "Changing root to /mnt"
-arch-chroot /mnt /bin/bash -c "$(cat ./chroot-commands.sh)"
+cp ./chroot-commands.sh /mnt/
+arch-chroot /mnt /bin/bash /chroot-commands.sh
 
 #echo "Setting time zone"
 #ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
