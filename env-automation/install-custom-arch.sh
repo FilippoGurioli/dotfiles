@@ -28,7 +28,7 @@ echo "Updating system clock"
 timedatectl set-ntp true
 
 echo "Selecting the fastest 10 mirrors"
-sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+#sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo "Partitioning the disk"
 if [ $VM_ENV ]; then
