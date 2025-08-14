@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
+
+########### Some useful functions ##############
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+info() { echo -e "[${GREEN}INF${NC}] $*"; }
+warning() { echo -e "[${YELLOW}WARN${NC}] $*"; }
+error() { echo -e "[${RED}ERR${NC}] $*"; }
+
+########### Some useful functions ##############
+
 set -euo pipefail # fail fast strategy
 
 # Checking if the hostname is provided as first parameter
 if [ $# -ne 2 ]; then
-	echo "Error: provide the host name as first parameter (e.g. desktop/laptop/...) and the root password as second"
+	error "provide the host name as first parameter (e.g. desktop/laptop/...) and the root password as second"
 	exit 1
 fi
 
@@ -14,15 +27,15 @@ else
 	VM_ENV=0
 fi
 
-echo "FIRST BOOT SCRIPT"
+info "FIRST BOOT SCRIPT"
 
-echo "Updating system clock"
+info "Updating system clock"
 timedatectl set-ntp true
 
-echo "Selecting the fastest 10 mirrors"
+info "Selecting the fastest 10 mirrors"
 sudo reflector --country "Italy,Germany,Switzerland,France" --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
-echo "Partitioning the disk"
+info "Partitioning the disk"
 if [ $VM_ENV -eq 1 ]; then
 	SSD_DISK=$(lsblk -d -o NAME,TYPE | awk '$2=="disk" {print $1; exit}')
 else
@@ -31,18 +44,18 @@ fi
 SSD_PATH="/dev/$SSD_DISK"
 
 if [ -z "$SSD_DISK" ]; then
-	echo "No SSD detected. Aborting."
+	error "No SSD detected. Aborting."
 	exit 1
 fi
 
 OTHER_DISKS=($(lsblk -d -o NAME,ROTA | awk -v ssd="$SSD_DISK" '$1!=ssd && $1!="NAME" {print $1}'))
 
-echo "SSD: $SSD_PATH"
-echo "OTHERS: $OTHER_DISKS"
+info "SSD: $SSD_PATH"
+info "OTHERS: ${OTHER_DISKS[*]}"
 
-echo "Wiping the existing partitions in $SSD_PATH"
+info "Wiping the existing partitions in $SSD_PATH"
 sgdisk --zap-all "$SSD_PATH" &>/dev/null
-echo "Creating EFI + ROOT partitions"
+info "Creating EFI + ROOT partitions"
 parted -s "$SSD_PATH" mklabel gpt #GUID Partition Table
 parted -s "$SSD_PATH" mkpart EFI fat32 1MiB 513MiB #First partition, name:EFI, type:fat32, from 1MiB to 513 MiB (leaving first MiB blank)
 parted -s "$SSD_PATH" set 1 esp on #Setting first partition as EFI System Partition (esp)
@@ -51,24 +64,24 @@ parted -s "$SSD_PATH" mkpart ROOT ext4 513MiB 100% #Second partition, name:ROOT,
 EFI_PART="${SSD_PATH}1"
 ROOT_PART="${SSD_PATH}2"
 
-echo "Formatting partitions"
+info "Formatting partitions"
 mkfs.fat -F32 "$EFI_PART" &>/dev/null
 mkfs.ext4 -F "$ROOT_PART" &>/dev/null
 
-echo "Mounting EFI + ROOT"
+info "Mounting EFI + ROOT"
 mount "$ROOT_PART" /mnt
 mkdir -p /mnt/boot
 mount "$EFI_PART" /mnt/boot
 
-echo "Installing base functionalities"
+info "Installing base functionalities"
 pacstrap -K /mnt base linux-zen linux-firmware grub efibootmgr vim
 
-echo "Generating file systems table"
+info "Generating file systems table"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "Mounting other disks"
+info "Mounting other disks"
 if [ ${#OTHER_DISKS[@]} -eq 0 ]; then
-	echo "No other disks found - skipping"
+	warning "No other disks found - skipping"
 else
 	for disk in "${OTHER_DISKS[@]}"; do
 		DISK_PATH="/dev/$disk"
@@ -83,53 +96,17 @@ else
 			MOUNT_DIR="/mnt/$PART_NAME"
 			mkdir -p "$MOUNT_DIR"
 			mount "$part" "$MOUNT_DIR"
-			echo "Mounted $part"
+			info "Mounted $part"
 		done
 	done
 fi
 
-echo "Changing root to /mnt"
+info "Changing root to /mnt"
 cp ./chroot-commands.sh /mnt/
 arch-chroot /mnt /bin/bash /chroot-commands.sh
 
-#echo "Setting time zone"
-#ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime
-
-#echo "Setting localization"
-#echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-#echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-#echo "it_IT.UTF-8 UTF-8" >> /etc/locale.gen
-#locale-gen
-#echo "LANG=en_US.UTF-8" > /etc/locale.conf
-#echo "LC_ADDRESS=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_IDENTIFICATION=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_MEASUREMENT=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_MONETARY=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_NAME=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_NUMERIC=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_PAPER=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_TELEPHONE=it_IT.UTF-8" >> /etc/locale.conf
-#echo "LC_TIME=it_IT.UTF-8" >> /etc/locale.conf
-
-#NAME="arch-$1"
-
-#echo "Setting hostname to $NAME"
-#echo "$NAME" > /etc/hostname
-
-#echo "Setting hosts"
-#echo "127.0.0.1 localhost" > /etc/hosts
-#echo "::1 localhost" >> /etc/hosts
-#echo "127.0.1.1 $NAME.localdomain $NAME" >> /etc/hosts
-
-#echo "Setting the root password to $2"
-#echo "root:$2" | chpasswd
-
-#echo "Installing bootloader"
-#grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-#grub-mkconfig -o /boot/grub/grub.cfg
-
-echo "MINIMAL INSTALLATION DONE"
-echo "Rebooting"
+info "MINIMAL INSTALLATION DONE"
+info "Rebooting"
 umount -R /mnt
 reboot
 exit 0
