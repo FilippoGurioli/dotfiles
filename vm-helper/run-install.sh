@@ -1,8 +1,8 @@
 #!/bin/bash
 
-STATUS= #libvirt-status
+STATUS=$(systemctl is-active libvirtd)
 
-if [ STATUS -e 0 ]; then
+if [ "$STATUS" != "active" ]; then
 	sudo systemctl enable --now libvirtd
 fi
 
