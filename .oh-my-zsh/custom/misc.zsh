@@ -17,5 +17,6 @@ eval `ttysvr logo tty --init 1800`
 autoload -U add-zsh-hook
 show_fortune() {
 	fortune -o | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1)
+	add-zsh-hook -d precmd show_fortune
 }
 add-zsh-hook precmd show_fortune
