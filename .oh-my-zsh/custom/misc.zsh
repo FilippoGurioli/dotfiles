@@ -13,3 +13,9 @@ eval `ttysvr logo tty --init 1800`
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U add-zsh-hook
+show_fortune() {
+	fortune -o | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1)
+}
+add-zsh-hook precmd show_fortune
