@@ -72,7 +72,7 @@
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲 disabled",
+    "format-disabled": "󰂲",
     "format-off": "󰂲",
     "format-on": "",
     "format-connected": " {num_connections}",
