@@ -36,10 +36,6 @@ cd ~/dotfiles/themer
 
 You can also trigger the `update-theme.sh` script using `$mainMod+R` key combination, as it is bound in the `hyprland.conf` file.
 
-### Environment automation
-
-There are a bunch of scripts in the `env-automation` directory that can help you set up your environment. Launching the  `setup.sh` script will install all the packages listed in the `packages.conf` file.
-
 ## Themer
 
 Going through ricing hyprland I've noticed that many times I had to repeat color values, fonts and other theme-based infos. To improve this, having a single source of truth in which declare all the style you want, I've created `themer`.
