@@ -92,3 +92,21 @@ button:hover {
 .modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
+
+#memory.warning {
+    color: $warning-color;
+}
+
+#memory.critical {
+    color: $error-color;
+    font-weight: bold;
+}
+
+#cpu.warning {
+    color: $warning-color;
+}
+
+#cpu.critical {
+    color: $error-color;
+    font-weight: bold;
+}
