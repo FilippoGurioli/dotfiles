@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["custom/distro-icon", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["cpu", "memory", "custom/updates", "pulseaudio", "backlight", "bluetooth", "battery", "power-profiles-daemon", "network", "clock"],
+  "modules-right": ["custom/recorder", "cpu", "memory", "custom/updates", "pulseaudio", "backlight", "bluetooth", "battery", "power-profiles-daemon", "network", "clock"],
   "custom/distro-icon": {
     "format": "",
     "interval": 3600
@@ -98,4 +98,10 @@
         "critical": 90
     }
   },
+  "custom/recorder": {
+    "exec": "~/.config/waybar/scripts/recorder-status.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "killall -s SIGINT wf-recorder"
+  }
 }

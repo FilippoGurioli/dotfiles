@@ -110,3 +110,13 @@ button:hover {
     color: $error-color;
     font-weight: bold;
 }
+
+#custom-recorder {
+    color: $error-color;
+    font-weight: bold;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+}
