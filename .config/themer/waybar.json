@@ -100,8 +100,9 @@
   },
   "custom/recorder": {
     "exec": "~/.config/waybar/scripts/recorder-status.sh",
-    "return-type": "json",
     "interval": 1,
+    "return-type": "json",
+    "format": "{}",
     "on-click": "killall -s SIGINT wf-recorder"
   }
 }
