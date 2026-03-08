@@ -10,6 +10,8 @@ source <(fzf --zsh)
 # Start tty saver with a custom logo after 30 minutes of inactivity
 eval `ttysvr logo tty --init 1800`
 
+source /usr/share/nvm/init-nvm.sh
+
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
