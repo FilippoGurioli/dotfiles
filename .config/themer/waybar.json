@@ -61,7 +61,8 @@
       "format-icons": {
           "default": ["", "", " "]
       },
-      "tooltip-format": "{volume}%"
+      "tooltip-format": "{volume}%",
+      "on-click": "pavucontrol"
   },
   "backlight": {
     "format": "{icon}",
