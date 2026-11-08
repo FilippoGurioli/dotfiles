@@ -1,0 +1,64 @@
+@define-color bg        #1a1b26;
+@define-color bg_dark   #16161e;
+@define-color bg_alt    #292e42;
+@define-color fg        #c0caf5;
+@define-color border    #414868;
+@define-color blue      #7aa2f7;
+@define-color blue_dark #3d59a1;
+@define-color green     #9ece6a;
+@define-color green_dk  #5a7052;
+
+window { background-color: @bg; color: @fg; }
+label { color: @fg; }
+
+/* text entries */
+entry {
+    background-color: @bg_dark;
+    color: @fg;
+    border: 1px solid @border;
+    border-radius: 6px;
+    padding: 6px 10px;
+    caret-color: @green;
+}
+entry:focus { border-color: @green; box-shadow: 0 0 0 1px @green; }
+
+/* fix #3 — selected text going invisible */
+entry selection, selection {
+    background-color: @green_dk;
+    color: @fg;
+}
+
+/* buttons: login / reboot / poweroff green by default (item 2) */
+button {
+    background-color: @bg_alt;
+    color: @fg;
+    padding: 6px 14px;
+}
+button.suggested-action,
+button.destructive-action {
+    background-color: @green;
+    color: @bg_dark;
+    /* border-color: @green; */
+}
+button:hover { background-color: @green_dk; color: @fg; }
+
+/* dropdowns: green borders always (item 2), fix row selection (item 3) */
+dropdown, combobox {
+    background-color: @bg_dark;
+    color: @fg;
+    border: 1px solid @green;
+    border-radius: 6px;
+}
+dropdown popover, dropdown list, dropdown row,
+listview row {
+    background-color: @bg_dark;
+    color: @fg;
+}
+dropdown row:selected, dropdown row:hover,
+listview row:selected, listview row:hover {
+    background-color: @green_dk;
+    color: @fg;
+}
+
+*:focus { outline-color: @blue; }
+

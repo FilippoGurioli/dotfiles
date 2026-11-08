@@ -18,7 +18,7 @@ stow .
 
 If the stow command doesn't succeed is because there are already files in your home directory with the same name as the ones in this repo. You can either delete them or move them to a different location.
 
-If you want to be conservative, you could change temporarely the name of those files to `<filename>.bak` and then run the `stow` command.
+If you want to be conservative, you could change temporally the name of those files to `<filename>.bak` and then run the `stow` command.
 
 If you know what you are doing, you can use the `--adopt` flag to let `stow` overwrite the existing files.
 

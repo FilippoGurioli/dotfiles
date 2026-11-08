@@ -1,0 +1,693 @@
+{
+    "controllers": [
+        {
+            "active_mode": 1,
+            "colors": [
+                26924
+            ],
+            "description": "MSI GPU V2 Device",
+            "display_name": "",
+            "flags": 1,
+            "leds": [
+                {
+                    "name": "Color"
+                }
+            ],
+            "location": "I2C: NVIDIA i2c adapter 1 at 1:00.0\n (/dev/i2c-1), address 0x68",
+            "modes": [
+                {
+                    "brightness": 5,
+                    "brightness_max": 0,
+                    "brightness_min": 0,
+                    "color_mode": 0,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 256,
+                    "name": "Off",
+                    "speed": 1,
+                    "speed_max": 0,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 304,
+                    "name": "Direct",
+                    "speed": 0,
+                    "speed_max": 0,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 3,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 403,
+                    "name": "Rainbow Wave",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 3,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 401,
+                    "name": "Magic",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 2,
+                    "colors": [
+                        255,
+                        65280,
+                        16711680
+                    ],
+                    "colors_max": 3,
+                    "colors_min": 1,
+                    "direction": 0,
+                    "flags": 337,
+                    "name": "Color Cycle",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Patrolling",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 3,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 401,
+                    "name": "Streaming",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 3,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 401,
+                    "name": "Lightning",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 2,
+                    "colors": [
+                        255,
+                        65280,
+                        16711680
+                    ],
+                    "colors_max": 3,
+                    "colors_min": 1,
+                    "direction": 0,
+                    "flags": 339,
+                    "name": "Wave",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Meteor",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Stack",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Rhythm",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Flowing",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Whirling",
+                    "speed": 0,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 2,
+                    "colors": [
+                        255,
+                        65280
+                    ],
+                    "colors_max": 2,
+                    "colors_min": 1,
+                    "direction": 0,
+                    "flags": 337,
+                    "name": "Fade In",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 2,
+                    "colors": [
+                        65386,
+                        65386
+                    ],
+                    "colors_max": 2,
+                    "colors_min": 1,
+                    "direction": 0,
+                    "flags": 337,
+                    "name": "Breathing",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Flashing",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                },
+                {
+                    "brightness": 5,
+                    "brightness_max": 5,
+                    "brightness_min": 1,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 305,
+                    "name": "Double Flashing",
+                    "speed": 1,
+                    "speed_max": 2,
+                    "speed_min": 0
+                }
+            ],
+            "name": "MSI GeForce RTX 5070 Gaming Trio",
+            "serial": "",
+            "type": 2,
+            "vendor": "MSI",
+            "version": "",
+            "zones": [
+                {
+                    "display_name": "",
+                    "flags": 0,
+                    "leds_count": 1,
+                    "leds_max": 1,
+                    "leds_min": 1,
+                    "matrix_map": {
+                        "height": 0,
+                        "width": 0
+                    },
+                    "name": "GPU",
+                    "type": 0
+                }
+            ]
+        },
+        {
+            "active_mode": 0,
+            "colors": [
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924,
+                26924
+            ],
+            "configuration": null,
+            "description": "MSI Mystic Light Device (761-byte)",
+            "display_name": "",
+            "flags": 1,
+            "leds": [
+                {
+                    "name": "JARGB 1, LED 1"
+                },
+                {
+                    "name": "JARGB 1, LED 2"
+                },
+                {
+                    "name": "JARGB 1, LED 3"
+                },
+                {
+                    "name": "JARGB 1, LED 4"
+                },
+                {
+                    "name": "JARGB 1, LED 5"
+                },
+                {
+                    "name": "JARGB 1, LED 6"
+                },
+                {
+                    "name": "JARGB 1, LED 7"
+                },
+                {
+                    "name": "JARGB 1, LED 8"
+                },
+                {
+                    "name": "JARGB 1, LED 9"
+                },
+                {
+                    "name": "JARGB 1, LED 10"
+                },
+                {
+                    "name": "JARGB 1, LED 11"
+                },
+                {
+                    "name": "JARGB 1, LED 12"
+                },
+                {
+                    "name": "JARGB 1, LED 13"
+                },
+                {
+                    "name": "JARGB 1, LED 14"
+                },
+                {
+                    "name": "JARGB 1, LED 15"
+                },
+                {
+                    "name": "JARGB 1, LED 16"
+                },
+                {
+                    "name": "JARGB 1, LED 17"
+                },
+                {
+                    "name": "JARGB 1, LED 18"
+                },
+                {
+                    "name": "JARGB 1, LED 19"
+                },
+                {
+                    "name": "JARGB 1, LED 20"
+                },
+                {
+                    "name": "JARGB 1, LED 21"
+                },
+                {
+                    "name": "JARGB 1, LED 22"
+                },
+                {
+                    "name": "JARGB 1, LED 23"
+                },
+                {
+                    "name": "JARGB 1, LED 24"
+                },
+                {
+                    "name": "JARGB 1, LED 25"
+                },
+                {
+                    "name": "JARGB 1, LED 26"
+                },
+                {
+                    "name": "JARGB 1, LED 27"
+                },
+                {
+                    "name": "JARGB 1, LED 28"
+                },
+                {
+                    "name": "JARGB 1, LED 29"
+                },
+                {
+                    "name": "JARGB 1, LED 30"
+                },
+                {
+                    "name": "JARGB 1, LED 31"
+                },
+                {
+                    "name": "JARGB 1, LED 32"
+                },
+                {
+                    "name": "JARGB 1, LED 33"
+                },
+                {
+                    "name": "JARGB 1, LED 34"
+                },
+                {
+                    "name": "JARGB 1, LED 35"
+                },
+                {
+                    "name": "JARGB 1, LED 36"
+                },
+                {
+                    "name": "JARGB 1, LED 37"
+                },
+                {
+                    "name": "JARGB 1, LED 38"
+                },
+                {
+                    "name": "JARGB 1, LED 39"
+                },
+                {
+                    "name": "JARGB 1, LED 40"
+                },
+                {
+                    "name": "JARGB 1, LED 41"
+                },
+                {
+                    "name": "JARGB 1, LED 42"
+                },
+                {
+                    "name": "JARGB 1, LED 43"
+                },
+                {
+                    "name": "JARGB 1, LED 44"
+                },
+                {
+                    "name": "JARGB 1, LED 45"
+                },
+                {
+                    "name": "JARGB 1, LED 46"
+                },
+                {
+                    "name": "JARGB 1, LED 47"
+                },
+                {
+                    "name": "JARGB 1, LED 48"
+                }
+            ],
+            "location": "HID: /dev/hidraw9",
+            "modes": [
+                {
+                    "brightness": 10,
+                    "brightness_max": 10,
+                    "brightness_min": 10,
+                    "color_mode": 1,
+                    "colors_max": 0,
+                    "colors_min": 0,
+                    "direction": 0,
+                    "flags": 32,
+                    "name": "Direct",
+                    "speed": 0,
+                    "speed_max": 0,
+                    "speed_min": 0
+                }
+            ],
+            "name": "MSI MYSTIC LIGHT",
+            "serial": "7E5124092002",
+            "type": 0,
+            "vendor": "MSI",
+            "version": "AP/LD  / ",
+            "zones": [
+                {
+                    "display_name": "",
+                    "flags": 4158,
+                    "leds_count": 0,
+                    "leds_max": 240,
+                    "leds_min": 0,
+                    "matrix_map": {
+                        "height": 0,
+                        "width": 0
+                    },
+                    "name": "JAF",
+                    "type": 1
+                },
+                {
+                    "display_name": "",
+                    "flags": 4158,
+                    "leds_count": 48,
+                    "leds_max": 240,
+                    "leds_min": 0,
+                    "matrix_map": {
+                        "height": 0,
+                        "width": 0
+                    },
+                    "name": "JARGB 1",
+                    "type": 1
+                },
+                {
+                    "display_name": "",
+                    "flags": 4158,
+                    "leds_count": 0,
+                    "leds_max": 240,
+                    "leds_min": 0,
+                    "matrix_map": {
+                        "height": 0,
+                        "width": 0
+                    },
+                    "name": "JARGB 2",
+                    "type": 1
+                },
+                {
+                    "display_name": "",
+                    "flags": 4158,
+                    "leds_count": 0,
+                    "leds_max": 240,
+                    "leds_min": 0,
+                    "matrix_map": {
+                        "height": 0,
+                        "width": 0
+                    },
+                    "name": "JARGB 3",
+                    "type": 1
+                }
+            ]
+        }
+    ],
+    "plugins": {
+        "OpenRGB Effects Plugin": {
+            "Effects": [
+                {
+                    "AllowOnlyFirst": false,
+                    "AutoStart": true,
+                    "Brightness": 100,
+                    "ControllerZones": [
+                        {
+                            "description": "MSI GPU V2 Device",
+                            "is_segment": false,
+                            "location": "I2C: NVIDIA i2c adapter 1 at 1:00.0\n (/dev/i2c-1), address 0x68",
+                            "name": "MSI GeForce RTX 5070 Gaming Trio",
+                            "reverse": false,
+                            "segment_idx": -1,
+                            "self_brightness": 100,
+                            "serial": "",
+                            "vendor": "MSI",
+                            "version": "",
+                            "zone_idx": 0
+                        },
+                        {
+                            "description": "MSI Mystic Light Device (761-byte)",
+                            "is_segment": false,
+                            "location": "HID: /dev/hidraw9",
+                            "name": "MSI MYSTIC LIGHT",
+                            "reverse": false,
+                            "segment_idx": -1,
+                            "self_brightness": 100,
+                            "serial": "7E5124092002",
+                            "vendor": "MSI",
+                            "version": "AP/LD  / ",
+                            "zone_idx": 0
+                        },
+                        {
+                            "description": "MSI Mystic Light Device (761-byte)",
+                            "is_segment": false,
+                            "location": "HID: /dev/hidraw9",
+                            "name": "MSI MYSTIC LIGHT",
+                            "reverse": false,
+                            "segment_idx": -1,
+                            "self_brightness": 100,
+                            "serial": "7E5124092002",
+                            "vendor": "MSI",
+                            "version": "AP/LD  / ",
+                            "zone_idx": 1
+                        },
+                        {
+                            "description": "MSI Mystic Light Device (761-byte)",
+                            "is_segment": false,
+                            "location": "HID: /dev/hidraw9",
+                            "name": "MSI MYSTIC LIGHT",
+                            "reverse": false,
+                            "segment_idx": -1,
+                            "self_brightness": 100,
+                            "serial": "7E5124092002",
+                            "vendor": "MSI",
+                            "version": "AP/LD  / ",
+                            "zone_idx": 2
+                        },
+                        {
+                            "description": "MSI Mystic Light Device (761-byte)",
+                            "is_segment": false,
+                            "location": "HID: /dev/hidraw9",
+                            "name": "MSI MYSTIC LIGHT",
+                            "reverse": false,
+                            "segment_idx": -1,
+                            "self_brightness": 100,
+                            "serial": "7E5124092002",
+                            "vendor": "MSI",
+                            "version": "AP/LD  / ",
+                            "zone_idx": 3
+                        }
+                    ],
+                    "CustomName": "Smooth Blink",
+                    "CustomSettings": {
+                        "cx": 50,
+                        "cy": 50,
+                        "interval": 2.0,
+                        "pulse_duration": 2.5,
+                        "pulses": 1,
+                        "rendering": 0,
+                        "strength": 0.5
+                    },
+                    "EffectClassName": "SmoothBlink",
+                    "FPS": 60,
+                    "RandomColors": false,
+                    "SelectAll": true,
+                    "Slider2Val": 1,
+                    "Speed": 1,
+                    "Temperature": 0,
+                    "Tint": 0,
+                    "UserColors": [
+                        65386,
+                        8206
+                    ]
+                }
+            ],
+            "version": 2
+        }
+    },
+    "profile_name": "WorkGreenBreathe",
+    "profile_version": 6
+}

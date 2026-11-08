@@ -1,0 +1,16 @@
+output "DP-1" {
+    mode "3440x1440@144.001"
+    position x=1920 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    position x=0 y=180
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+spawn-sh-at-startup "swww-daemon & sleep 0.5 && swww img -o HDMI-A-1 /home/rioly/Pictures/wallpapers/minimalist.jpg"
+spawn-sh-at-startup "niri msg action focus-monitor \"DP-1\"; regreet; niri msg action quit --skip-confirmation"

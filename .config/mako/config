@@ -1,0 +1,48 @@
+# Position & Layout
+anchor=top-right
+layer=overlay
+max-visible=5
+sort=-time
+
+# Geometry
+width=360
+height=150
+margin=12
+padding=12
+border-size=2
+border-radius=8
+
+# Colors & Typography
+font=Sans 10
+background-color=#1e1e2eff
+text-color=#cdd6f4ff
+border-color=#9ece6aff
+progress-color=over #313244ff
+
+# Behavior
+default-timeout=5000
+ignore-timeout=1
+
+# Style overrides by urgency
+[urgency=low]
+border-color=#a6e3a1ff
+default-timeout=3000
+
+[urgency=high]
+border-color=#f38ba8ff
+default-timeout=0
+
+# Custom rule for Brave Browser
+[app-name="brave-browser"]
+border-color=#ff5500ff
+background-color=#1e1e2eff
+text-color=#ffffffff
+icon-location=left
+icon-path=/usr/share/icons/Papirus
+max-icon-size=48
+default-timeout=8000
+
+# Match specific web apps / sites by summary text (e.g., Discord or Web WhatsApp)
+[app-name="brave-browser" summary~="WhatsApp"]
+border-color=#25d366ff
+default-timeout=0

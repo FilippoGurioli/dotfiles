@@ -1,0 +1,151 @@
+{
+    "height": 44,
+    "spacing": 4,
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "custom/nightlight",
+        "power-profiles-daemon",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "group/power"
+    ],
+    "niri/workspaces": {
+        "format": "{index}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 50
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": "󰌪"
+        }
+    },
+    "clock": {
+        "timezone": "Europe/Rome",
+        "format": "{:%H:%M  %a, %b %e}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "group/hardware": {
+		"orientation": "vertical",
+		"modules": [
+			"cpu",
+			"memory",
+			"battery"
+		]
+	},
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "on-click": "foot --app-id=btop-float btop -p 1"
+    },
+    "memory": {
+        "format": "{}% ",
+        "tooltip-format": "{used:0.1f}/{total:0.1f}GiB \n{swapUsed:0.1f}/{swapTotal:0.1f}GiB 󰣁",
+        "on-click": "foot --app-id=btop-float btop -p 2"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", "", ""],
+        "on-click": "foot --app-id=btop-float btop -p 3"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "format-linked": "{ifname} (No IP) 󰊗",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "foot -e impala"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰅶 {icon} {format_source}",
+        "format-muted": "󰅶 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "foot -e pulsemixer"
+    },
+    "group/power": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 300,
+        "children-class": "power-child",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/power-trigger",
+        "custom/shutdown",
+        "custom/reboot",
+        "custom/lock",
+        "custom/quit"
+      ]
+    },
+
+    "custom/power-trigger": {
+        "format": "⏻",
+        "tooltip": false
+    },
+    "custom/shutdown": {
+        "format": "󰐥",
+        "tooltip": false,
+        "on-click": "echo -e 'No\nYes' | rofi -dmenu -i -p 'Power off?' | grep -q 'Yes' && systemctl poweroff"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "echo -e 'No\nYes' | rofi -dmenu -i -p 'Reboot?' | grep -q 'Yes' && systemctl reboot"
+    },
+    "custom/lock": {
+        "format": "󰌾",
+        "tooltip": false,
+        "on-click": "hyprlock"
+    },
+    "custom/quit": {
+        "format": "󰍃",
+        "tooltip": false,
+        "on-click": "niri msg action quit"
+    },
+    "custom/nightlight": {
+        "exec": "$HOME/.config/waybar/scripts/nightlight.sh",
+        "return-type": "json",
+        "interval": 3,
+        "signal": 8,
+        "on-click": "$HOME/.config/waybar/scripts/nightlight.sh toggle"
+    },
+    "custom/updates": {
+        "exec": "$HOME/dotfiles/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "signal": 1,
+        "on-click": "foot -e sudo pacman -Syu"
+    }
+}

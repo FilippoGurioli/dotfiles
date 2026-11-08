@@ -1,58 +1,24 @@
 [user]
 	name = Filippo Gurioli
-	email = filippo.gurioli@studio.unibo.it
-	signingkey = 47EC1F379BAC7FFB
+	email = gurfi2001@gmail.com
 [pull]
-	default = current
-	rebase = true
-[commit]
-	gpgsign = true
+  default = current
+  rebase = true
 [status]
-	short = true
-	branch = true
-	showStash = true
-	showUntrackedFiles = all
-[core]
-	pager = delta
-	compression = 9
-	whitespace = error
-	preloadindex = true
-[advice]
-	addEmptyPathspecs = false
-	pushNonFastForward = false
-	statusHints = false
-[url "git@github.com:"]
-	insteadOf = "gh:"
-[url "git@github.com:FilippoGurioli/"]
-	insteadOf = "fg:"
-[init]
-	defaultBranch = dev
-[diff]
-	context = 3
-	renames = copies
-	interHunkContext = 10
-[pager]
-	branch = false
-	tag = false
-[color "diff"]
-	meta = black bold
-	frag = magenta
-	context = white
-	whitespace = yellow reverse
-	old = red
-[interactive]
-	singlekey = true
-	diffFilter = delta --color-only
+  short = true
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
 [push]
-	autoSetupRemote = true
-	default = current
-	followTags = true
+  autoSetupRemote = true
+  default = current
+  followTags = true
 [rebase]
-	autoStash = true
-	missingCommitsCheck = warn
+  autoStash = true
+  missingCommitsCheck = warn
 [log]
-	abbrevCommit = true
-	graphColors = blue,yellow,cyan,magenta,green,red
+  abbrevCommit = true
+  graphColors = blue,yellow,cyan,magenta,green,red
 [color "decorate"]
 	HEAD = red
 	branch = yellow
@@ -68,11 +34,52 @@
 	sort = -committerdate
 [tag]
 	sort = -taggerdate
+
+# git-delta
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
 [delta]
-	navigate = true    # use n and N to move between diff sections
-	side-by-side = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+  syntax-theme = tokyonight_night
+
+  # --- Diff background highlights ---
+  minus-style = syntax "#3a273a"
+  minus-non-emph-style = syntax "#352233"
+  minus-emph-style = syntax "#5f2a40"
+  minus-empty-line-marker-style = syntax "#352233"
+
+  plus-style = syntax "#203a43"
+  plus-non-emph-style = syntax "#1c333b"
+  plus-emph-style = syntax "#26545c"
+  plus-empty-line-marker-style = syntax "#1c333b"
+
+  # --- File Header & Horizontal Dividers ---
+  file-style = bold "#7aa2f7"
+  file-decoration-style = "#3b4261" ul
+
+  # --- Hunk Header ("───────┐ • 19: │ ───────┘") ---
+  hunk-header-style = line-number
+  hunk-header-file-part-style = "#7aa2f7" bold
+  hunk-header-line-number-part-style = "#bb9af7" bold
+  hunk-header-decoration-style = "#3b4261" box
+
+  # --- Line Numbers & Vertical Borders ---
+  line-numbers-left-style = "#565f89"
+  line-numbers-right-style = "#565f89"
+  line-numbers-minus-style = "#f7768e"
+  line-numbers-plus-style = "#9ece6a"
+  line-numbers-zero-style = "#565f89"
+  line-numbers-left-format = "{nm:>4} │ "
+  line-numbers-right-format = "{np:>4} │ "
+
+  # --- Zero/Unchanged line styling ---
+  zero-style = syntax
+
+[merge]
+  conflictStyle = zdiff3

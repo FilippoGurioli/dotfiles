@@ -1,0 +1,29 @@
+skip_selection = false
+
+[background]
+path = "/home/rioly/Pictures/wallpapers/minimalist.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+cursor_theme_name = "Adwaita"
+cursor_blink = true
+font_name = "FiraCode Nerd Font 16"
+icon_theme_name = "Adwaita"
+theme_name = "Adwaita"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+x11_prefix = [ "startx", "/usr/bin/env" ]
+
+[appearance]
+greeting_msg = "Welcome back!"
+
+
+[widget.clock]
+format = "%A, %d %B - %H:%M"
+resolution = "1s"
+timezone = "Europe/Rome"
+label_width = 320
+locale = "en_US"
