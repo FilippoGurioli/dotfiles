@@ -142,7 +142,7 @@
         "on-click": "$HOME/.config/waybar/scripts/nightlight.sh toggle"
     },
     "custom/updates": {
-        "exec": "$HOME/dotfiles/.config/waybar/scripts/updates.sh",
+        "exec": "$HOME/.config/waybar/scripts/updates.sh",
         "return-type": "json",
         "interval": 3600,
         "signal": 1,
